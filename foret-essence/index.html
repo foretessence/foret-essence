@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forêt Essence — Toque invisível de sofisticação</title>
+    <meta name="description" content="Home Sprays e Difusores de Aromas artesanais. Transforme seu espaço com fragrâncias sofisticadas que criam memórias olfativas únicas.">
+    <meta name="keywords" content="home spray, difusor de aromas, fragrância, perfume ambiente, Cuiabá, presente sofisticado">
+    <meta property="og:title" content="Forêt Essence — Toque invisível de sofisticação">
+    <meta property="og:description" content="Home Sprays e Difusores de Aromas artesanais que transformam ambientes em experiências sensoriais.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo-slogan.png">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a08;
+            --bg-secondary: #141410;
+            --bg-card: #1a1a16;
+            --bg-card-hover: #222218;
+            --text-primary: #f5f0e8;
+            --text-secondary: #b8b0a0;
+            --text-muted: #7a7468;
+            --accent: #8b9a6b;
+            --accent-light: #a3b47e;
+            --accent-dark: #6b7a50;
+            --gold: #c9a96e;
+            --gold-light: #dfc08a;
+            --border: rgba(200, 190, 170, 0.08);
+            --border-light: rgba(200, 190, 170, 0.15);
+            --shadow: 0 4px 40px rgba(0,0,0,0.4);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Outfit', system-ui, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════ UTILITY ═══════════ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+        }
+
+        /* ═══════════ ANIMATIONS ═══════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes floatSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            30% { transform: translate(3%, -15%); }
+            50% { transform: translate(-10%, 5%); }
+            70% { transform: translate(8%, 10%); }
+            90% { transform: translate(-3%, 8%); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════ GRAIN OVERLAY ═══════════ */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200%;
+            background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E") repeat;
+            animation: grain 8s steps(10) infinite;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ═══════════ HEADER / NAV ═══════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s var(--ease);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 8, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo img {
+            height: 32px;
+            opacity: 0.9;
+            filter: brightness(10);
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover img {
+            opacity: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s var(--ease);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--bg-primary);
+            background: var(--accent);
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-primary);
+            margin: 6px 0;
+            transition: all 0.3s;
+        }
+
+        /* ═══════════ HERO ═══════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(139, 154, 107, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(201, 169, 110, 0.04) 0%, transparent 50%),
+                var(--bg-primary);
+        }
+
+        .hero-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+            opacity: 0.3;
+            animation: fadeIn 2s 0.5s both;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding-top: 120px;
+        }
+
+        .hero-tag {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            animation: slideRight 1s 0.3s var(--ease) both;
+        }
+
+        .hero-tag::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            margin-right: 16px;
+            vertical-align: middle;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            animation: fadeUp 1s 0.5s var(--ease) both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-light);
+        }
+
+        .hero-desc {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 200;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 48px;
+            animation: fadeUp 1s 0.7s var(--ease) both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            animation: fadeUp 1s 0.9s var(--ease) both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--bg-primary);
+            background: var(--accent);
+            padding: 16px 36px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s var(--ease);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139, 154, 107, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 16px 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-secondary svg {
+            transition: transform 0.3s var(--ease);
+        }
+
+        .btn-secondary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 1s 1.5s both;
+        }
+
+        .hero-scroll span {
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            writing-mode: vertical-rl;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            animation: floatSoft 2s infinite;
+        }
+
+        /* ═══════════ SECTION COMMON ═══════════ */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-tag {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-tag::before {
+            content: '';
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            font-weight: 200;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 560px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* ═══════════ PRODUCTS ═══════════ */
+        #produtos {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .products-header .section-desc {
+            margin: 0 auto;
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+        }
+
+        .cat-btn.active,
+        .cat-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--accent);
+            background: rgba(139, 154, 107, 0.08);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s var(--ease);
+            cursor: pointer;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .product-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-code {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .product-subtitle {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .product-notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .note-tag {
+            font-size: 0.68rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            background: rgba(139, 154, 107, 0.08);
+            border: 1px solid rgba(139, 154, 107, 0.15);
+            padding: 4px 12px;
+        }
+
+        .product-tagline {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: auto;
+        }
+
+        /* ═══════════ PRICING ═══════════ */
+        #precos {
+            position: relative;
+        }
+
+        .pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 48px 40px;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-dark);
+        }
+
+        .pricing-card.featured::after {
+            content: 'MAIS VENDIDO';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--bg-primary);
+            background: var(--gold);
+            padding: 4px 12px;
+        }
+
+        .pricing-type {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .pricing-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-desc {
+            font-size: 0.88rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table td {
+            padding: 14px 0;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .pricing-table td:first-child {
+            color: var(--text-secondary);
+        }
+
+        .pricing-table td:last-child {
+            text-align: right;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .pricing-note {
+            margin-top: 20px;
+            font-size: 0.78rem;
+            font-weight: 200;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════ KITS EMPRESAS ═══════════ */
+        #empresas {
+            background: var(--bg-secondary);
+        }
+
+        .kits-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .kit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .kit-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent-dark);
+            padding: 4px 14px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .kit-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .kit-desc {
+            font-size: 0.88rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .kit-pricing {
+            margin-top: auto;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .kit-old-price {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .kit-new-price {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .kit-discount {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--bg-primary);
+            background: var(--accent);
+            padding: 3px 10px;
+        }
+
+        /* ═══════════ ABOUT ═══════════ */
+        #sobre {
+            position: relative;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .about-visual-box {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .about-visual-box:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-visual-box:nth-child(1) img {
+            max-width: 60%;
+            filter: brightness(10);
+            opacity: 0.4;
+        }
+
+        .about-visual-box:nth-child(2) {
+            bottom: 0;
+            right: 0;
+            width: 240px;
+            padding: 40px;
+        }
+
+        .about-stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        .about-stat-label {
+            font-size: 0.78rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .about-content .section-desc {
+            margin-bottom: 32px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-feature {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .about-feature-icon {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: rgba(139, 154, 107, 0.08);
+            border: 1px solid rgba(139, 154, 107, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-feature-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+        }
+
+        .about-feature-text h4 {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .about-feature-text p {
+            font-size: 0.82rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+        }
+
+        /* ═══════════ CTA SECTION ═══════════ */
+        .cta-section {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 50% 60% at 50% 50%, rgba(139, 154, 107, 0.06), transparent);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .cta-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .cta-desc {
+            font-size: 1rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            background: #25D366;
+            padding: 16px 36px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s var(--ease);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 16px 36px;
+            text-decoration: none;
+            transition: all 0.3s var(--ease);
+        }
+
+        .btn-instagram:hover {
+            color: var(--text-primary);
+            border-color: var(--text-muted);
+        }
+
+        /* ═══════════ FOOTER ═══════════ */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            filter: brightness(10);
+            opacity: 0.6;
+        }
+
+        .footer-slogan {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-col h5 {
+            font-family: var(--font-body);
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            font-weight: 200;
+            color: var(--text-muted);
+        }
+
+        .footer-locale {
+            font-size: 0.72rem;
+            font-weight: 200;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════ MOBILE NAV OVERLAY ═══════════ */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 8, 0.97);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+
+        .mobile-nav.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: 200;
+        }
+
+        /* ═══════════ RESPONSIVE ═══════════ */
+        @media (max-width: 900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-mobile-toggle {
+                display: block;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .pricing-layout,
+            .kits-layout,
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-visual {
+                height: 300px;
+                display: none;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-links {
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content {
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-categories {
+                gap: 6px;
+            }
+
+            .cat-btn {
+                padding: 8px 16px;
+                font-size: 0.68rem;
+            }
+
+            .pricing-card {
+                padding: 32px 24px;
+            }
+
+            .kit-card {
+                padding: 28px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 28px;
+            }
+        }
+
+        /* ═══════════ WHATSAPP FLOAT ═══════════ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 90;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s var(--ease);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="Forêt Essence">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#produtos">Fragrâncias</a></li>
+                <li><a href="#precos">Preços</a></li>
+                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+            <a href="https://wa.me/5565984483337?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20Forêt%20Essence." class="nav-cta">Compre Agora</a>
+            <button class="nav-mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()">×</button>
+        <a href="#produtos" onclick="toggleMobileNav()">Fragrâncias</a>
+        <a href="#precos" onclick="toggleMobileNav()">Preços</a>
+        <a href="#empresas" onclick="toggleMobileNav()">Empresas</a>
+        <a href="#sobre" onclick="toggleMobileNav()">Sobre</a>
+        <a href="https://wa.me/5565984483337?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20Forêt%20Essence." onclick="toggleMobileNav()">Compre Agora</a>
+    </div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-line"></div>
+        <div class="container hero-content">
+            <p class="hero-tag">Home Sprays & Difusores de Aromas</p>
+            <h1>O toque <em>invisível</em><br>de sofisticação</h1>
+            <p class="hero-desc">Fragrâncias artesanais que transformam ambientes em experiências sensoriais. Cada essência é uma memória olfativa criada para elevar o seu espaço.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/5565984483337?text=Olá!%20Gostaria%20de%20conhecer%20as%20fragrâncias%20Forêt%20Essence." class="btn-primary">
+                    Peça o Seu
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#produtos" class="btn-secondary">
+                    Conheça as Fragrâncias
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Explore</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════ PRODUCTS ═══════ -->
+    <section id="produtos">
+        <div class="container">
+            <div class="products-header reveal">
+                <p class="section-tag">Coleção</p>
+                <h2 class="section-title">Nossas Fragrâncias</h2>
+                <p class="section-desc">12 composições exclusivas, cada uma com sua personalidade. Disponíveis em Home Spray e Difusor de Aromas.</p>
+                <div class="product-categories">
+                    <button class="cat-btn active" onclick="filterProducts('all')">Todas</button>
+                    <button class="cat-btn" onclick="filterProducts('aconchego')">Aconchego</button>
+                    <button class="cat-btn" onclick="filterProducts('frescor')">Frescor</button>
+                    <button class="cat-btn" onclick="filterProducts('elegancia')">Elegância</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+
+                <div class="product-card reveal" data-category="aconchego">
+                    <p class="product-code">FE-001</p>
+                    <h3 class="product-name">Abraço de Baunilha</h3>
+                    <p class="product-subtitle">Aconchego & Calor</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Baunilha</span>
+                        <span class="note-tag">Canela</span>
+                        <span class="note-tag">Gengibre</span>
+                    </div>
+                    <p class="product-tagline">Doçura especiada que aquece a alma.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="frescor">
+                    <p class="product-code">FE-002</p>
+                    <h3 class="product-name">Bambu Marinho</h3>
+                    <p class="product-subtitle">Frescor Oceânico & Natureza</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Algas Marinhas</span>
+                        <span class="note-tag">Bambu</span>
+                    </div>
+                    <p class="product-tagline">A serenidade do oceano em seu espaço.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="frescor">
+                    <p class="product-code">FE-003</p>
+                    <h3 class="product-name">Brisa Pura</h3>
+                    <p class="product-subtitle">Pureza & Tranquilidade</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Baunilha</span>
+                        <span class="note-tag">Lavanda</span>
+                        <span class="note-tag">Oceanus</span>
+                    </div>
+                    <p class="product-tagline">Carinho e frescor em perfeita harmonia.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="aconchego">
+                    <p class="product-code">FE-004</p>
+                    <h3 class="product-name">Calda de Cereja</h3>
+                    <p class="product-subtitle">Paixão & Celebração</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Cereja</span>
+                        <span class="note-tag">Baunilha</span>
+                        <span class="note-tag">Canela</span>
+                        <span class="note-tag">Cravo</span>
+                    </div>
+                    <p class="product-tagline">Intensidade festiva que encanta.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="frescor">
+                    <p class="product-code">FE-005</p>
+                    <h3 class="product-name">Casa Tranquila</h3>
+                    <p class="product-subtitle">Clareza & Refinamento</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Bambu</span>
+                        <span class="note-tag">Alecrim</span>
+                    </div>
+                    <p class="product-tagline">Renovação e clareza em cada borrifada.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="elegancia">
+                    <p class="product-code">FE-006</p>
+                    <h3 class="product-name">Chá Branco</h3>
+                    <p class="product-subtitle">Leveza & Serenidade</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Bergamota</span>
+                        <span class="note-tag">Chá Branco</span>
+                        <span class="note-tag">Cedro</span>
+                        <span class="note-tag">Fava Tonka</span>
+                        <span class="note-tag">Lírio do Vale</span>
+                        <span class="note-tag">Musk</span>
+                        <span class="note-tag">Rosa Damascena</span>
+                        <span class="note-tag">Vetiver</span>
+                    </div>
+                    <p class="product-tagline">Paz e elegância em cada detalhe.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="aconchego">
+                    <p class="product-code">FE-007</p>
+                    <h3 class="product-name">Doce Sono</h3>
+                    <p class="product-subtitle">Tranquilidade & Descanso</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Lavanda</span>
+                        <span class="note-tag">Camomila</span>
+                    </div>
+                    <p class="product-tagline">Tranquilidade que embala o sono.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="elegancia">
+                    <p class="product-code">FE-008</p>
+                    <h3 class="product-name">Hotel Padrão</h3>
+                    <p class="product-subtitle">Equilíbrio & Serenidade</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Bambu</span>
+                        <span class="note-tag">Jasmin</span>
+                        <span class="note-tag">Bergamota</span>
+                        <span class="note-tag">Notas Verdes</span>
+                        <span class="note-tag">Musk</span>
+                        <span class="note-tag">Cedro</span>
+                    </div>
+                    <p class="product-tagline">Leveza e harmonia naturais.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="aconchego">
+                    <p class="product-code">FE-009</p>
+                    <h3 class="product-name">Piquenique</h3>
+                    <p class="product-subtitle">Alegria & Conforto</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Algodão</span>
+                        <span class="note-tag">Cereja</span>
+                        <span class="note-tag">Baunilha</span>
+                    </div>
+                    <p class="product-tagline">Felicidade e aconchego em um só aroma.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="elegancia">
+                    <p class="product-code">FE-010</p>
+                    <h3 class="product-name">Linho Branco</h3>
+                    <p class="product-subtitle">Pureza & Elegância Moderna</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Chá Branco</span>
+                        <span class="note-tag">Bambu</span>
+                    </div>
+                    <p class="product-tagline">Limpeza impecável, sofisticação natural.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="aconchego">
+                    <p class="product-code">FE-011</p>
+                    <h3 class="product-name">Nuvem de Algodão</h3>
+                    <p class="product-subtitle">Suavidade & Leveza</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Algodão</span>
+                    </div>
+                    <p class="product-tagline">A pureza do conforto absoluto.</p>
+                </div>
+
+                <div class="product-card reveal" data-category="elegancia">
+                    <p class="product-code">FE-012</p>
+                    <h3 class="product-name">Esplendore</h3>
+                    <p class="product-subtitle">Grandeza & Magnificência</p>
+                    <div class="product-notes">
+                        <span class="note-tag">Canela</span>
+                        <span class="note-tag">Caramelo</span>
+                        <span class="note-tag">Cravo</span>
+                        <span class="note-tag">Baunilha com Patchouly</span>
+                    </div>
+                    <p class="product-tagline">A pureza do conforto absoluto.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════ PRICING ═══════ -->
+    <section id="precos">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-tag">Tamanhos & Valores</p>
+                <h2 class="section-title">Escolha o seu formato</h2>
+                <p class="section-desc">Cada fragrância está disponível em diferentes tamanhos para se adaptar ao seu espaço e necessidade.</p>
+            </div>
+
+            <div class="pricing-layout">
+                <div class="pricing-card reveal featured">
+                    <p class="pricing-type">Fragrância Instantânea</p>
+                    <h3 class="pricing-title">Home Spray</h3>
+                    <p class="pricing-desc">Borrifadas que transformam qualquer ambiente instantaneamente. Perfeito para momentos especiais ou uso diário.</p>
+                    <table class="pricing-table">
+                        <tr>
+                            <td>60 ml — Bolsa & Viagem</td>
+                            <td>R$ 20</td>
+                        </tr>
+                        <tr>
+                            <td>110 ml — Uso Pessoal</td>
+                            <td>R$ 30</td>
+                        </tr>
+                        <tr>
+                            <td>250 ml — Uso Frequente</td>
+                            <td>R$ 56</td>
+                        </tr>
+                    </table>
+                    <p class="pricing-note">Refil 250ml disponível por R$ 43</p>
+                </div>
+
+                <div class="pricing-card reveal reveal-delay-1">
+                    <p class="pricing-type">Fragrância Contínua</p>
+                    <h3 class="pricing-title">Difusor de Aromas</h3>
+                    <p class="pricing-desc">Fragrância constante e sofisticada com varetas de difusão. Ideal para manter o ambiente perfumado por semanas.</p>
+                    <table class="pricing-table">
+                        <tr>
+                            <td>240 ml — Com Varetas</td>
+                            <td>R$ 93</td>
+                        </tr>
+                    </table>
+                    <p class="pricing-note">Refil 250ml disponível por R$ 75<br>Coloque as varetas no frasco e vire após 12 horas. Inverta sempre que notar as varetas secas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════ KITS EMPRESAS ═══════ -->
+    <section id="empresas">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-tag">Linha Empresa</p>
+                <h2 class="section-title">Kits Corporativos</h2>
+                <p class="section-desc">Presenteie clientes e colaboradores com sofisticação. Kits com preços especiais para o mercado B2B.</p>
+            </div>
+
+            <div class="kits-layout">
+                <div class="kit-card reveal">
+                    <span class="kit-badge">Kit Básico</span>
+                    <h3 class="kit-name">3 Home Sprays 60ml</h3>
+                    <p class="kit-desc">Trio perfeito para presentear. Escolha entre as 12 fragrâncias do nosso portfólio e crie combinações únicas.</p>
+                    <div class="kit-pricing">
+                        <span class="kit-old-price">R$ 60</span>
+                        <span class="kit-new-price">R$ 54</span>
+                        <span class="kit-discount">10% OFF</span>
+                    </div>
+                </div>
+
+                <div class="kit-card reveal reveal-delay-1">
+                    <span class="kit-badge">Kit Básico 2</span>
+                    <h3 class="kit-name">2 Home Sprays 110ml</h3>
+                    <p class="kit-desc">Dupla elegante em tamanho generoso. Ideal para presentes corporativos que impressionam pela qualidade.</p>
+                    <div class="kit-pricing">
+                        <span class="kit-old-price">R$ 60</span>
+                        <span class="kit-new-price">R$ 55</span>
+                        <span class="kit-discount">8% OFF</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="reveal" style="margin-top: 40px; font-size: 0.85rem; font-weight: 200; color: var(--text-muted); text-align: center;">Para pedidos acima de 20 unidades, solicite uma proposta personalizada via WhatsApp.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════ ABOUT ═══════ -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-visual reveal">
+                    <div class="about-visual-box">
+                        <img src="assets/logo-dark.png" alt="Forêt Essence">
+                    </div>
+                    <div class="about-visual-box">
+                        <p class="about-stat-number">12</p>
+                        <p class="about-stat-label">fragrâncias exclusivas criadas artesanalmente</p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <p class="section-tag reveal">Quem Somos</p>
+                    <h2 class="section-title reveal">Onde a floresta encontra a essência</h2>
+                    <p class="section-desc reveal">Forêt Essence nasceu da paixão por criar ambientes que contam histórias. Cada fragrância é cuidadosamente desenvolvida para transformar espaços em experiências sensoriais que criam memórias olfativas duradouras.</p>
+                    <div class="about-features">
+                        <div class="about-feature reveal">
+                            <div class="about-feature-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Composições Artesanais</h4>
+                                <p>Cada fragrância é desenvolvida com essências selecionadas de alta qualidade.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-1">
+                            <div class="about-feature-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Memórias Olfativas</h4>
+                                <p>Fragrâncias pensadas para criar vínculos emocionais com cada ambiente.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-2">
+                            <div class="about-feature-icon">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            </div>
+                            <div class="about-feature-text">
+                                <h4>Para Todos os Espaços</h4>
+                                <p>De residências a hotéis e clínicas — sofisticação em qualquer ambiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ CTA ═══════ -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2 class="cta-title reveal">Transforme seu espaço<br>em uma <em>experiência</em></h2>
+            <p class="cta-desc reveal reveal-delay-1">Converse conosco e descubra a fragrância perfeita para o seu ambiente. Atendimento personalizado via WhatsApp.</p>
+            <div class="cta-buttons reveal reveal-delay-2">
+                <a href="https://wa.me/5565984483337?text=Olá!%20Gostaria%20de%20conhecer%20as%20fragrâncias%20Forêt%20Essence." class="btn-whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="https://www.instagram.com/foretessence" target="_blank" class="btn-instagram">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    @foretessence
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <img src="assets/logo.png" alt="Forêt Essence">
+                    </a>
+                    <p class="footer-slogan">Toque invisível de sofisticação</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Navegação</h5>
+                        <a href="#produtos">Fragrâncias</a>
+                        <a href="#precos">Preços</a>
+                        <a href="#empresas">Empresas</a>
+                        <a href="#sobre">Sobre</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contato</h5>
+                        <a href="https://wa.me/5565984483337">65 98448-3337</a>
+                        <a href="https://www.instagram.com/foretessence" target="_blank">@foretessence</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2025 Forêt Essence. Todos os direitos reservados.</p>
+                <p class="footer-locale">Cuiabá — MT, Brasil</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5565984483337?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20Forêt%20Essence." class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        // ═══════ SCROLL REVEAL ═══════
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // ═══════ NAV SCROLL ═══════
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            if (scroll > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            lastScroll = scroll;
+        });
+
+        // ═══════ MOBILE NAV ═══════
+        function toggleMobileNav() {
+            document.getElementById('mobileNav').classList.toggle('open');
+        }
+
+        // ═══════ PRODUCT FILTER ═══════
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const btns = document.querySelectorAll('.cat-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = '';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // ═══════ SMOOTH SCROLL ═══════
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
